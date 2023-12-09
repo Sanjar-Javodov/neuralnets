@@ -73,7 +73,7 @@ def train():
     class_weight = {0: 0.5, 1: 3}  # задаем веса для каждого класса
     model.compile(
         loss=tf.keras.losses.BinaryCrossentropy(),
-        optimizer=tf.keras.optimizers.AdamW(3e-4),
+        optimizer=tf.keras.optimizers.Adam(3e-4),
         metrics=['accuracy', tf.keras.metrics.Precision()]
     )
 
@@ -125,7 +125,7 @@ def upload():
     shutil.make_archive(base_name=PATH_TO_MODEL,
                         format='zip',
                         root_dir=PATH_TO_MODEL)
-    config = dotenv.dotenv_values('.env')
+    config = dotenv.dotenv_values('env')
     ACCESS_KEY = config['ACCESS_KEY']
     SECRET_KEY = config['SECRET_KEY']
 
